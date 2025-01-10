@@ -1,11 +1,14 @@
 import { ItemCardapio } from "./itemcardapio";
-import { Mesa } from "./Mesa";
-import { Garcom } from "./Garcom";
+import { Mesa } from "./mesa";
+import { Cliente } from "./cliente";
+import { Garcom } from "./garcom";
+import { Funcionario } from "./garcom"
 
 export class Restaurante {
     private _mesas: Mesa[];
     private _cardapio: ItemCardapio[];
     private _garcons: Garcom[];
+    private _funcionarios: Funcionario[]
     private _despesas: number;
     private _receita: number;
     private _feedbacks: string[];
@@ -18,6 +21,10 @@ export class Restaurante {
         this._receita = 0;
         this._feedbacks = [];
     }
+    
+    get despesas(): number{
+        return this._despesas
+    }
 
     get cardapio(): ItemCardapio[] {
         return this._cardapio;
@@ -26,14 +33,14 @@ export class Restaurante {
     get feedbacks(): string[] {
         return this._feedbacks;
     }
-
-    get receita(): number {
-        return this._receita;
+    
+    set feedbacks(feedback: string) {
+        if (!feedback.trim()) {
+            throw new Error("O feedback não pode ser vazio.");
+        }
+        this._feedbacks.push(feedback);
     }
-
-    get despesas(): number {
-        return this._despesas;
-    }
+    
 
     adicionarItemCardapio(nome: string, preco: number): void {
         this._cardapio.push(new ItemCardapio(nome, preco));
@@ -42,7 +49,9 @@ export class Restaurante {
     adicionarGarcom(nome: string, salario: number): void {
         this._garcons.push(new Garcom(nome, salario));
     }
-
+    adicionarFuncionario(nome: string, salario: number, funcao: string): void {
+        this._funcionarios.push(new Funcionario(nome, salario, funcao));
+    }
     getMesa(id: number): Mesa {
         const mesa = this._mesas.find(mesa => mesa.id === id);
         if (!mesa) {
@@ -72,4 +81,21 @@ export class Restaurante {
     adicionarFeedback(feedback: string): void {
         this._feedbacks.push(feedback);
     }
+
+    calcularDespesasGarcons(): number {
+        const despesasSalariosGarcons = this._garcons.reduce((total, garcom) => total + garcom.salario, 0);
+        this._despesas = despesasSalariosGarcons; 
+        return despesasSalariosGarcons;
+    }
+
+    calcularDespesasFuncionarios(): number {
+        const despesasSalariosFuncionarios = this._funcionarios.reduce((total,funcionario) => total + funcionario.salario, 0);
+        this._despesas = despesasSalariosFuncionarios; 
+        return despesasSalariosFuncionarios;
+    }
+
+    calcularDespesasTotais(): number {
+        return this.calcularDespesasFuncionarios() + this.calcularDespesasGarcons()
+    }
+
 }

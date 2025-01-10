@@ -37,3 +37,23 @@ export class Garcom {
         return this._salario + this._gorjetasRecebidas;
     }
 }
+export class Funcionario extends Garcom {
+    private _funcao: string;
+
+    constructor(nome: string, salario: number, funcao: string) {
+        super(nome, salario);
+        this._funcao = funcao;
+    }
+
+    get funcao(): string {
+        return this._funcao;
+    }
+
+    set funcao(funcao: string) {
+        this._funcao = funcao;
+    }
+
+    calcularSalariofuncionario(): number{
+        return this.salario
+    }
+}
