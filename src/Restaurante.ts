@@ -12,7 +12,8 @@ export class Restaurante {
     private _despesas: number;
     private _receita: number;
     private _feedbacks: string[];
-
+    private _clientes: Cliente[];
+              
     constructor(numeroDeMesas: number) {
         this._mesas = Array.from({ length: numeroDeMesas }, (_, i) => new Mesa(i + 1));
         this._cardapio = [];
@@ -22,12 +23,39 @@ export class Restaurante {
         this._feedbacks = [];
     }
     
+    get mesas():Mesa[]{
+        return this._mesas
+    }
+
+    get garcons():Garcom[]{
+        return this._garcons
+    }
+    
+    get funcionario():Funcionario[]{
+        return this._funcionarios
+    }
+
     get despesas(): number{
         return this._despesas
     }
 
+    get receita(): number{
+        return this._receita
+    }
+
     get cardapio(): ItemCardapio[] {
         return this._cardapio;
+    }
+
+    get clientes(): Cliente[] {
+        return this._clientes;
+    }
+
+    set clientes(cliente: string) {
+        if (!cliente.trim()) {
+            throw new Error("O nome do cliente não pode ser vazio.");
+        }
+        this._feedbacks.push(cliente);
     }
 
     get feedbacks(): string[] {
@@ -44,6 +72,10 @@ export class Restaurante {
 
     adicionarItemCardapio(nome: string, preco: number): void {
         this._cardapio.push(new ItemCardapio(nome, preco));
+    }
+
+    adicionarCliente(nome: string, pontosFidelidade: number): void {
+        this._clientes.push(new Cliente(nome));
     }
 
     adicionarGarcom(nome: string, salario: number): void {

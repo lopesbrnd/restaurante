@@ -3,7 +3,13 @@ import { Cliente } from "./cliente";
 import { Garcom } from "./garcom";
 import {Funcionario} from "./garcom"
 
-let restaurante = new Restaurante(10);
+let restaurante = new Restaurante(25);
+restaurante.adicionarItemCardapio("Pizza", 20);
+restaurante.adicionarItemCardapio("Massa", 15);
+restaurante.adicionarItemCardapio("Refrigerante", 5);
+restaurante.adicionarItemCardapio("Pizza", 20);
+restaurante.adicionarItemCardapio("Massa", 15);
+restaurante.adicionarItemCardapio("Refrigerante", 5);
 restaurante.adicionarItemCardapio("Pizza", 20);
 restaurante.adicionarItemCardapio("Massa", 15);
 restaurante.adicionarItemCardapio("Refrigerante", 5);
