@@ -4,19 +4,26 @@ import { Garcom } from "./garcom";
 import {Funcionario} from "./garcom"
 
 let restaurante = new Restaurante(25);
-restaurante.adicionarItemCardapio("Pizza", 20);
-restaurante.adicionarItemCardapio("Massa", 15);
-restaurante.adicionarItemCardapio("Refrigerante", 5);
-restaurante.adicionarItemCardapio("Pizza", 20);
-restaurante.adicionarItemCardapio("Massa", 15);
-restaurante.adicionarItemCardapio("Refrigerante", 5);
-restaurante.adicionarItemCardapio("Pizza", 20);
-restaurante.adicionarItemCardapio("Massa", 15);
-restaurante.adicionarItemCardapio("Refrigerante", 5);
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
+restaurante.adicionarItemCardapio("Pizza", 20, 'super pizza');
 
-let cliente1 = new Cliente("João");
-let garcom1 = new Garcom("Carlos", 2000); 
-let funcionario1 = new Funcionario("Wagner",1700,"faxineiro")
+
+let cliente1 = new Cliente("Micael");
+let garcom1 = new Garcom("Bernardo", 2000);
+let garcom2 = new Garcom("Gabriela", 2000);
+let garcom3 = new Garcom("Marina", 2000); 
+let funcionario1 = new Funcionario("Big GIVA",30000,"gerente")
+let funcionario2 = new Funcionario("Jonatas",4000,"Chef")
+let funcionario3 = new Funcionario("Guilherme",4000,"Chef")
 
 const mesa1 = restaurante.getMesa(1);
 mesa1.reservarMesa(cliente1);

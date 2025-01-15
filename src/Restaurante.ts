@@ -1,6 +1,5 @@
 import { ItemCardapio } from "./itemcardapio";
 import { Mesa } from "./mesa";
-import { Cliente } from "./cliente";
 import { Garcom } from "./garcom";
 import { Funcionario } from "./garcom"
 
@@ -11,8 +10,7 @@ export class Restaurante {
     private _funcionarios: Funcionario[]
     private _despesas: number;
     private _receita: number;
-    private _feedbacks: string[];
-    private _clientes: Cliente[];
+
               
     constructor(numeroDeMesas: number) {
         this._mesas = Array.from({ length: numeroDeMesas }, (_, i) => new Mesa(i + 1));
@@ -20,7 +18,6 @@ export class Restaurante {
         this._garcons = [];
         this._despesas = 0;
         this._receita = 0;
-        this._feedbacks = [];
     }
     
     get mesas():Mesa[]{
@@ -47,35 +44,9 @@ export class Restaurante {
         return this._cardapio;
     }
 
-    get clientes(): Cliente[] {
-        return this._clientes;
-    }
 
-    set clientes(cliente: string) {
-        if (!cliente.trim()) {
-            throw new Error("O nome do cliente não pode ser vazio.");
-        }
-        this._feedbacks.push(cliente);
-    }
-
-    get feedbacks(): string[] {
-        return this._feedbacks;
-    }
-    
-    set feedbacks(feedback: string) {
-        if (!feedback.trim()) {
-            throw new Error("O feedback não pode ser vazio.");
-        }
-        this._feedbacks.push(feedback);
-    }
-    
-
-    adicionarItemCardapio(nome: string, preco: number): void {
-        this._cardapio.push(new ItemCardapio(nome, preco));
-    }
-
-    adicionarCliente(nome: string, pontosFidelidade: number): void {
-        this._clientes.push(new Cliente(nome));
+    adicionarItemCardapio(nome: string, preco: number, descricao:string): void {
+        this._cardapio.push(new ItemCardapio(nome, preco, descricao));
     }
 
     adicionarGarcom(nome: string, salario: number): void {
@@ -108,10 +79,6 @@ export class Restaurante {
 
         mesa.liberarMesa();
         return valorFinal;
-    }
-
-    adicionarFeedback(feedback: string): void {
-        this._feedbacks.push(feedback);
     }
 
     calcularDespesasGarcons(): number {
