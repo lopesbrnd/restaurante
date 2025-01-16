@@ -1,13 +1,13 @@
-import { ItemCardapio } from "./itemcardapio";
-import { Mesa } from "./mesa";
-import { Garcom } from "./garcom";
-import { Funcionario } from "./garcom"
+import { ItemCardapio } from "./itemcardapio.js";
+import { Mesa } from "./Mesa.js";
+import { Garcom } from "./Garcom.js";
+import { Funcionario } from "./Garcom.js"
 
 export class Restaurante {
     private _mesas: Mesa[];
     private _cardapio: ItemCardapio[];
     private _garcons: Garcom[];
-    private _funcionarios: Funcionario[]
+    private _funcionarios: Garcom[];
     private _despesas: number;
     private _receita: number;
 
